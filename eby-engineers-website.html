@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eby Engineers, Inc. — Civil Design · Land Planning · Construction Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8D9;
+    --paper-card:#F7F4E9;
+    --paper-line:#CFC6A9;
+    --ink:#1B2A4A;
+    --ink-soft:#44536E;
+    --blue:#2F6690;
+    --blue-deep:#1B3E56;
+    --rust:#C1471E;
+    --rust-deep:#9B3717;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- title-block header ---------- */
+  .titleblock{
+    border-bottom:2px solid var(--ink);
+    background:var(--paper);
+    position:sticky; top:0; z-index:20;
+  }
+  .tb-row{
+    display:flex; align-items:stretch; flex-wrap:wrap;
+    max-width:1080px; margin:0 auto;
+  }
+  .tb-cell{
+    border-right:1px solid var(--paper-line);
+    padding:10px 18px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .tb-cell:last-child{border-right:none;}
+  .tb-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:2px;
+  }
+  .tb-value{font-size:13px; font-weight:600;}
+  .tb-brand{flex:1; min-width:220px;}
+  .tb-brand .name{
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px;
+    letter-spacing:0.01em;
+  }
+  .tb-brand .tag{font-size:11px; color:var(--ink-soft); margin-top:1px;}
+  .tb-nav{
+    display:flex; align-items:center; gap:22px; padding:10px 18px;
+    font-size:13.5px; font-weight:600;
+  }
+  .tb-nav a{text-decoration:none; color:var(--ink); border-bottom:1px solid transparent;}
+  .tb-nav a:hover{border-bottom-color:var(--rust); color:var(--rust-deep);}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--paper-line);}
+  .hero-inner{
+    max-width:1080px; margin:0 auto; padding:88px 28px 96px;
+    position:relative; z-index:2;
+  }
+  .hero svg.bg{position:absolute; inset:0; width:100%; height:100%; z-index:1; opacity:0.55;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--blue-deep); margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--rust); display:inline-block;}
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(34px,5vw,54px);
+    line-height:1.08; margin:0 0 22px; max-width:16ch; color:var(--ink);
+  }
+  h1 em{font-style:italic; color:var(--blue-deep);}
+  .hero p.lead{
+    font-size:17.5px; color:var(--ink-soft); max-width:52ch; margin:0 0 32px;
+  }
+  .cta-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:14.5px; text-decoration:none;
+    padding:13px 22px; border:1.5px solid var(--ink);
+  }
+  .btn-primary{background:var(--rust); border-color:var(--rust); color:#fdf9f1;}
+  .btn-primary:hover{background:var(--rust-deep); border-color:var(--rust-deep);}
+  .btn-ghost{color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  /* ---------- section framing ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:60ch; margin-bottom:44px;}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--rust-deep); margin-bottom:10px;
+  }
+  h2{font-family:'Fraunces', serif; font-weight:600; font-size:clamp(24px,3vw,32px); margin:0 0 14px; color:var(--ink);}
+  .section-head p{color:var(--ink-soft); font-size:15.5px; margin:0;}
+
+  /* ---------- services ---------- */
+  .services{background:var(--paper-card); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);}
+  .svc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--paper-line); border:1px solid var(--paper-line);}
+  .svc-card{background:var(--paper-card); padding:32px 30px;}
+  .svc-num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--blue); margin-bottom:14px;}
+  .svc-card h3{font-family:'Fraunces',serif; font-size:19px; font-weight:600; margin:0 0 10px;}
+  .svc-card p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  .svc-card .spec{
+    margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:11.5px;
+    color:var(--blue-deep); line-height:1.7;
+  }
+
+  /* ---------- jurisdictions strip ---------- */
+  .jur{padding:52px 0;}
+  .jur-inner{display:flex; flex-wrap:wrap; align-items:center; gap:26px 40px;}
+  .jur-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .jur-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .jur-tag{
+    border:1px solid var(--ink); padding:7px 14px; font-size:13px; font-weight:600;
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ---------- approach ---------- */
+  .approach{border-top:1px solid var(--paper-line);}
+  .approach-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;}
+  .approach p{color:var(--ink-soft); font-size:15.5px; margin:0 0 16px;}
+  .stat-block{border-left:2px solid var(--rust); padding-left:22px; margin-bottom:26px;}
+  .stat-block .num{font-family:'Fraunces',serif; font-size:36px; font-weight:600; color:var(--ink); line-height:1;}
+  .stat-block .lbl{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+
+  /* ---------- footer / title block ---------- */
+  footer{border-top:2px solid var(--ink); background:var(--paper-card);}
+  .foot-row{display:flex; flex-wrap:wrap;}
+  .foot-cell{
+    flex:1; min-width:200px; border-right:1px solid var(--paper-line);
+    padding:26px 28px;
+  }
+  .foot-cell:last-child{border-right:none;}
+  footer .tb-label{margin-bottom:6px;}
+  footer .tb-value{font-size:14px; font-weight:500;}
+  footer a.tb-value{text-decoration:none;}
+  footer a.tb-value:hover{color:var(--rust-deep);}
+  .foot-legal{
+    max-width:1080px; margin:0 auto; padding:16px 28px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width:760px){
+    .svc-grid{grid-template-columns:1fr;}
+    .approach-grid{grid-template-columns:1fr;}
+    .tb-row{flex-direction:column;}
+    .tb-cell{border-right:none; border-bottom:1px solid var(--paper-line);}
+    .tb-nav{flex-wrap:wrap; gap:14px 18px;}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header class="titleblock">
+  <div class="tb-row">
+    <div class="tb-cell tb-brand">
+      <div class="name">Eby Engineers <span style="font-style:italic; font-weight:400;">inc.</span></div>
+      <div class="tag">civil design · land planning · construction management</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Firm Reg.</div>
+      <div class="tb-value mono">T.B.P.E. F-1127</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Established</div>
+      <div class="tb-value mono">1990</div>
+    </div>
+  </div>
+  <div class="tb-row">
+    <nav class="tb-nav">
+      <a href="#services">Services</a>
+      <a href="#jurisdictions">Service Area</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="bg" viewBox="0 0 1080 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#2F6690" stroke-width="1">
+      <path d="M -20 420 C 200 380, 340 460, 560 400 S 900 340, 1100 400" opacity="0.35"/>
+      <path d="M -20 460 C 220 430, 360 500, 580 450 S 920 400, 1100 450" opacity="0.25"/>
+      <path d="M -20 380 C 180 340, 320 410, 540 350 S 880 300, 1100 350" opacity="0.2"/>
+    </g>
+    <g stroke="#1B2A4A" stroke-width="1.4" fill="none" opacity="0.3">
+      <path d="M 60 60 L 60 260 L 340 260 L 340 130 L 640 130 L 640 300 L 980 300"/>
+    </g>
+    <g fill="#C1471E" opacity="0.55">
+      <circle cx="60" cy="60" r="4"/>
+      <circle cx="60" cy="260" r="4"/>
+      <circle cx="340" cy="260" r="4"/>
+      <circle cx="340" cy="130" r="4"/>
+      <circle cx="640" cy="130" r="4"/>
+      <circle cx="640" cy="300" r="4"/>
+      <circle cx="980" cy="300" r="4"/>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#1B2A4A" opacity="0.4">
+      <text x="66" y="52">MH-1</text>
+      <text x="346" y="122">MH-2</text>
+      <text x="646" y="292">MH-3</text>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div class="eyebrow">Houston, Texas &mdash; Since 1990</div>
+    <h1>Civil engineering for the districts and developers who <em>build Houston</em>.</h1>
+    <p class="lead">Eby Engineers provides municipal utility infrastructure, drainage, and land development engineering for MUD boards, developers, and municipalities across the greater Houston area.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:dennis@ebyengineers.com">Email Dennis</a>
+      <a class="btn btn-ghost" href="tel:7139570788">713.957.0788</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Scope of Services</div>
+      <h2>Engineering for infrastructure that has to work the first time.</h2>
+      <p>From design through construction, we carry projects across the agencies that govern them.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3>Municipal Utility Infrastructure</h3>
+        <p>Waterline and sanitary sewer design for MUDs and developers, from mainline extensions through tap connections.</p>
+        <div class="spec">C-900 PVC · bore &amp; jack · tapping sleeves</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h3>Stormwater &amp; Drainage</h3>
+        <p>Detention and drainage design sized to hold up under review, not just calculation.</p>
+        <div class="spec">Rational Method · Modified Puls routing</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h3>Site Civil &amp; Land Development</h3>
+        <p>Grading, paving, and utility layout that turns a plat into a buildable site.</p>
+        <div class="spec">Plan production · AutoCAD Civil 3D</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h3>Regulatory Coordination</h3>
+        <p>We carry projects through review with the agencies that have jurisdiction over them, start to finish.</p>
+        <div class="spec">Permitting · plan review · construction admin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="jur" id="jurisdictions">
+  <div class="wrap">
+    <div class="jur-inner">
+      <div class="jur-label">Agencies we work within</div>
+      <div class="jur-tags">
+        <span class="jur-tag">Harris County OCE</span>
+        <span class="jur-tag">HCFCD</span>
+        <span class="jur-tag">TCEQ</span>
+        <span class="jur-tag">City of Tomball</span>
+        <span class="jur-tag">City of Houston</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="approach-grid">
+      <div>
+        <div class="section-label">Approach</div>
+        <h2>A small firm, on purpose.</h2>
+        <p>Eby Engineers has provided civil design, land planning, and construction management services to the Houston area since 1990. We keep the firm small enough that the engineer who designs your project is the same one who answers the phone during construction.</p>
+        <p>Every project runs through the agencies that govern it &mdash; MUD boards, county offices, and state regulators &mdash; and we treat that coordination as part of the engineering, not a step after it.</p>
+      </div>
+      <div>
+        <div class="stat-block">
+          <div class="num">1990</div>
+          <div class="lbl">Firm founded</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">F-1127</div>
+          <div class="lbl">T.B.P.E. Firm Registration No.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="foot-cell">
+        <div class="tb-label">Mailing Address</div>
+        <div class="tb-value">P.O. Box 926037<br>Houston, TX 77292-6037</div>
+      </div>
+      <div class="foot-cell">
+        <div class="tb-label">Phone</div>
+        <a class="tb-value mono" href="tel:7139570788">713.957.0788</a>
+      </div>
+      <div class="foot-cell">
+        <div class="tb-label">Email</div>
+        <a class="tb-value mono" href="mailto:dennis@ebyengineers.com">dennis@ebyengineers.com</a>
+      </div>
+      <div class="foot-cell">
+        <div class="tb-label">Firm Registration</div>
+        <div class="tb-value mono">T.B.P.E. F-1127</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <span>&copy; 2026 Eby Engineers, Inc.</span>
+    <span>SHEET: CONTACT &nbsp;·&nbsp; SCALE: NTS &nbsp;·&nbsp; REV: 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
