@@ -31,7 +31,7 @@
   }
   a{color:inherit;}
   .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 28px;}
 
   /* ---------- title-block header ---------- */
   .titleblock{
@@ -41,11 +41,11 @@
   }
   .tb-row{
     display:flex; align-items:stretch; flex-wrap:wrap;
-    max-width:1080px; margin:0 auto;
+    max-width:1200px; margin:0 auto;
   }
   .tb-cell{
     border-right:1px solid var(--paper-line);
-    padding:10px 18px;
+    padding:18px 22px;
     display:flex; flex-direction:column; justify-content:center;
   }
   .tb-cell:last-child{border-right:none;}
@@ -56,25 +56,89 @@
   }
   .tb-value{font-size:13px; font-weight:600;}
   .tb-brand{flex:1; min-width:220px;}
-  .tb-brand .name{
-    font-family:'Fraunces', serif; font-weight:600; font-size:22px;
-    letter-spacing:0.01em;
+  .logo-mark{display:inline-block; min-width:260px;}
+  .logo-eby{
+    font-family:'Fraunces', serif; font-weight:500; font-size:36px;
+    line-height:1; letter-spacing:0.01em; color:var(--ink);
   }
-  .tb-brand .tag{font-size:11px; color:var(--ink-soft); margin-top:1px;}
+  .logo-rule{height:1px; background:var(--ink); margin:5px 0 3px; width:100%;}
+  .logo-bottom-row{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+  .logo-follow{display:flex; align-items:center; gap:6px;}
+  .logo-follow-label{
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .logo-social{
+    display:inline-flex; align-items:center; gap:5px; text-decoration:none;
+    color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-size:11px;
+  }
+  .logo-social svg{width:14px; height:14px;}
+  .logo-social:hover{color:var(--rust-deep);}
+  .logo-sub{
+    font-family:'Fraunces', serif; font-weight:400; font-size:19px;
+    line-height:1.1; color:var(--ink);
+  }
+  .tb-brand .tag{font-size:12px; color:var(--ink-soft); margin-top:8px;}
   .tb-nav{
     display:flex; align-items:center; gap:22px; padding:10px 18px;
     font-size:13.5px; font-weight:600;
   }
   .tb-nav a{text-decoration:none; color:var(--ink); border-bottom:1px solid transparent;}
   .tb-nav a:hover{border-bottom-color:var(--rust); color:var(--rust-deep);}
+  .tb-nav .nav-social{display:inline-flex; align-items:center;}
+  .tb-nav .nav-social svg{width:17px; height:17px; display:block;}
 
   /* ---------- hero ---------- */
-  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--paper-line);}
-  .hero-inner{
-    max-width:1080px; margin:0 auto; padding:88px 28px 96px;
-    position:relative; z-index:2;
+  .hero{
+    position:relative; overflow:hidden; border-bottom:1px solid var(--paper-line);
+    background-color:#E2DECC;
+    background-image:
+      repeating-linear-gradient(to right, transparent 0 39px, rgba(27,42,74,0.07) 39px 40px),
+      repeating-linear-gradient(to bottom, transparent 0 39px, rgba(27,42,74,0.07) 39px 40px);
   }
-  .hero svg.bg{position:absolute; inset:0; width:100%; height:100%; z-index:1; opacity:0.55;}
+  .hero-inner{
+    max-width:1200px; margin:0 auto; padding:88px 28px 96px;
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1fr 320px; gap:52px; align-items:start;
+  }
+  .hero svg.bg{position:absolute; left:0; right:0; bottom:0; width:100%; height:220px; z-index:1; opacity:0.5;}
+
+  /* ---------- hero field-updates panel ---------- */
+  .hero-feed{
+    background:var(--paper); border:1px solid var(--ink);
+    display:flex; flex-direction:column;
+    height:420px; position:relative;
+  }
+  .hero-feed-head{
+    padding:12px 16px; border-bottom:1px solid var(--paper-line);
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft); flex-shrink:0;
+  }
+  .hero-feed-head span.dot{color:var(--rust); font-size:14px; line-height:0;}
+  .hero-feed-scroll{
+    overflow-y:auto; flex:1; scrollbar-width:thin; scrollbar-color:var(--blue) transparent;
+  }
+  .hero-feed-scroll::-webkit-scrollbar{width:6px;}
+  .hero-feed-scroll::-webkit-scrollbar-thumb{background:var(--paper-line);}
+  .feed-post{padding:16px; border-bottom:1px solid var(--paper-line);}
+  .feed-post:last-child{border-bottom:none;}
+  .feed-post-top{display:flex; justify-content:space-between; margin-bottom:8px;}
+  .feed-post-date{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--blue);}
+  .feed-post-tag{font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--rust-deep); border:1px solid var(--rust); padding:1px 6px;}
+  .feed-post h4{font-family:'Fraunces',serif; font-size:14.5px; font-weight:600; margin:0 0 6px;}
+  .feed-post p{font-size:12.5px; color:var(--ink-soft); margin:0 0 10px; line-height:1.5;}
+  .feed-post-photos{display:grid; grid-template-columns:repeat(3,1fr); gap:3px;}
+  .feed-post-photos img{width:100%; height:52px; object-fit:cover; display:block;}
+  .hero-feed-fade{
+    position:sticky; left:0; right:0; bottom:0; height:36px; margin-top:-36px;
+    background:linear-gradient(to bottom, rgba(237,232,217,0), var(--paper));
+    pointer-events:none; display:block;
+  }
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-feed{height:280px;}
+  }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.16em;
     text-transform:uppercase; color:var(--blue-deep); margin-bottom:18px;
@@ -112,18 +176,69 @@
 
   /* ---------- services ---------- */
   .services{background:var(--paper-card); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);}
-  .svc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--paper-line); border:1px solid var(--paper-line);}
-  .svc-card{background:var(--paper-card); padding:32px 30px;}
-  .svc-num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--blue); margin-bottom:14px;}
-  .svc-card h3{font-family:'Fraunces',serif; font-size:19px; font-weight:600; margin:0 0 10px;}
-  .svc-card p{margin:0; color:var(--ink-soft); font-size:14.5px;}
-  .svc-card .spec{
-    margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:11.5px;
-    color:var(--blue-deep); line-height:1.7;
+  .svc-list{border-top:1px solid var(--ink);}
+  .svc-row{
+    display:grid; grid-template-columns:64px 44px 1fr; gap:0 22px;
+    align-items:start; padding:30px 0; border-bottom:1px solid var(--paper-line);
+  }
+  .svc-row:hover{background:rgba(47,102,144,0.04);}
+  .svc-num{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--blue);
+    padding-top:6px;
+  }
+  .svc-icon{padding-top:2px;}
+  .svc-icon svg{width:40px; height:40px; display:block;}
+  .svc-body h3{font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin:0 0 8px;}
+  .svc-body p{margin:0 0 12px; color:var(--ink-soft); font-size:14.5px; max-width:56ch;}
+  .svc-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .svc-tags span{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--blue-deep);
+    border:1px solid var(--paper-line); padding:4px 9px;
+  }
+  @media (max-width:600px){
+    .svc-row{grid-template-columns:36px 1fr; row-gap:8px;}
+    .svc-icon{display:none;}
   }
 
+  /* ---------- projects ---------- */
+  .projects{background:var(--paper); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);}
+  .proj-list{display:flex; flex-direction:column; border:1px solid var(--paper-line);}
+  .proj-card{
+    background:var(--paper-card); padding:22px 28px; cursor:pointer;
+    border-bottom:1px solid var(--paper-line);
+    transition:background 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  }
+  .proj-card:last-child{border-bottom:none;}
+  .proj-list:hover .proj-card:not(:hover){opacity:0.45;}
+  .proj-card:hover{background:var(--paper); padding:34px 40px;}
+  .proj-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;}
+  .proj-sheet{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;
+    background:var(--rust); color:var(--paper); padding:3px 9px; font-weight:600;
+  }
+  .proj-year{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
+  .proj-card h3{font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin:0 0 6px; transition:font-size 0.3s ease;}
+  .proj-card:hover h3{font-size:23px;}
+  .proj-client{font-size:12.5px; color:var(--rust-deep); font-weight:600; margin-bottom:10px;}
+  .proj-card p{margin:0; color:var(--ink-soft); font-size:14px; max-width:75ch; transition:font-size 0.3s ease;}
+  .proj-card:hover p{font-size:15.5px;}
+  .proj-photos{
+    display:flex; gap:8px; overflow-x:auto; max-height:0; opacity:0; margin-top:0;
+    transition:max-height 0.4s ease, opacity 0.3s ease 0.1s, margin-top 0.4s ease;
+  }
+  .proj-card:hover .proj-photos{max-height:150px; opacity:1; margin-top:20px;}
+  .proj-photo-ph{
+    flex:0 0 120px; height:88px; border:1px dashed var(--blue);
+    background:repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(47,102,144,0.12) 6px, rgba(47,102,144,0.12) 12px);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--blue-deep); letter-spacing:0.06em;
+  }
+  .proj-card:hover .proj-photo-ph{flex:0 0 190px; height:140px; font-size:11px;}
+
+
+
   /* ---------- jurisdictions strip ---------- */
-  .jur{padding:52px 0;}
+  .jur{padding:52px 0; background:var(--paper-card);}
   .jur-inner{display:flex; flex-wrap:wrap; align-items:center; gap:26px 40px;}
   .jur-label{
     font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.12em;
@@ -135,13 +250,41 @@
     font-family:'IBM Plex Mono',monospace;
   }
 
-  /* ---------- approach ---------- */
-  .approach{border-top:1px solid var(--paper-line);}
+  /* ---------- districts served ---------- */
+  .districts{padding:52px 0; border-top:1px solid var(--paper-line); background:var(--paper);}
+  .dist-inner{display:flex; flex-wrap:wrap; align-items:center; gap:26px 40px;}
+  .dist-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .dist-tag{
+    border:1px solid var(--blue-deep); padding:7px 14px; font-size:13px; font-weight:600;
+    font-family:'IBM Plex Mono',monospace; color:var(--blue-deep); display:flex; gap:8px; align-items:baseline;
+  }
+  .dist-tag .since{color:var(--ink-soft); font-weight:400; font-size:11px;}
+
+  /* ---------- team ---------- */
+  .team{border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line); background:var(--paper-card);}
+  .team-card{border-left:2px solid var(--blue); padding-left:22px;}
+  .team-card h3{font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin:0 0 2px;}
+  .team-card .role{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--rust-deep); margin-bottom:12px;}
+  .team-card p{color:var(--ink-soft); font-size:14.5px; margin:0 0 8px;}
+  .team-card .cred{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft);}
+
+  /* ---------- about layout grid (reused two-column layout) ---------- */
   .approach-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;}
-  .approach p{color:var(--ink-soft); font-size:15.5px; margin:0 0 16px;}
-  .stat-block{border-left:2px solid var(--rust); padding-left:22px; margin-bottom:26px;}
-  .stat-block .num{font-family:'Fraunces',serif; font-size:36px; font-weight:600; color:var(--ink); line-height:1;}
-  .stat-block .lbl{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+
+  /* ---------- testimonials ---------- */
+  .testimonials{background:var(--paper); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);}
+  .test-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--paper-line); border:1px solid var(--paper-line);}
+  .test-card{background:var(--paper-card); padding:32px 34px; position:relative;}
+  .test-mark{
+    font-family:'Fraunces',serif; font-size:44px; color:var(--blue); opacity:0.35;
+    line-height:1; margin-bottom:4px;
+  }
+  .test-card p{
+    font-family:'Fraunces', serif; font-style:italic; font-size:15.5px; line-height:1.5;
+    color:var(--ink); margin:0 0 16px;
+  }
+  .test-attr{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--rust-deep);}
+  .test-attr .org{color:var(--ink-soft); display:block; margin-top:2px;}
 
   /* ---------- footer / title block ---------- */
   footer{border-top:2px solid var(--ink); background:var(--paper-card);}
@@ -151,24 +294,44 @@
     padding:26px 28px;
   }
   .foot-cell:last-child{border-right:none;}
+  .social-link{display:inline-flex; align-items:center; gap:8px; text-decoration:none;}
+  .social-link svg{width:18px; height:18px; flex-shrink:0;}
+  .social-link:hover .tb-value{color:var(--rust-deep);}
   footer .tb-label{margin-bottom:6px;}
   footer .tb-value{font-size:14px; font-weight:500;}
   footer a.tb-value{text-decoration:none;}
   footer a.tb-value:hover{color:var(--rust-deep);}
   .foot-legal{
-    max-width:1080px; margin:0 auto; padding:16px 28px;
+    max-width:1200px; margin:0 auto; padding:16px 28px;
     font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
   }
 
   @media (max-width:760px){
-    .svc-grid{grid-template-columns:1fr;}
+    .test-grid{grid-template-columns:1fr;}
     .approach-grid{grid-template-columns:1fr;}
     .tb-row{flex-direction:column;}
     .tb-cell{border-right:none; border-bottom:1px solid var(--paper-line);}
     .tb-nav{flex-wrap:wrap; gap:14px 18px;}
   }
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }  /* ---------- sheet border frame (wide screens only) ---------- */
+  .sheet-frame{
+    position:fixed; inset:22px; border:1px solid var(--ink); opacity:0.12;
+    pointer-events:none; z-index:1; display:none;
+  }
+  .sheet-frame .corner{position:absolute; width:16px; height:16px; opacity:0.55;}
+  .sheet-frame .corner.tl{top:-1px; left:-1px; border-top:2px solid var(--rust); border-left:2px solid var(--rust);}
+  .sheet-frame .corner.tr{top:-1px; right:-1px; border-top:2px solid var(--rust); border-right:2px solid var(--rust);}
+  .sheet-frame .corner.bl{bottom:-1px; left:-1px; border-bottom:2px solid var(--rust); border-left:2px solid var(--rust);}
+  .sheet-frame .corner.br{bottom:-1px; right:-1px; border-bottom:2px solid var(--rust); border-right:2px solid var(--rust);}
+  .sheet-frame .side-label{
+    position:absolute; top:50%; left:-13px; transform:translateY(-50%) rotate(-90deg);
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em;
+    color:var(--ink); opacity:0.5; white-space:nowrap;
+  }
+  .sheet-frame .side-label.right{left:auto; right:-13px; transform:translateY(-50%) rotate(90deg);}
+  @media (min-width:1500px){.sheet-frame{display:block;}}
+
 </style>
 </head>
 <body>
@@ -176,7 +339,22 @@
 <header class="titleblock">
   <div class="tb-row">
     <div class="tb-cell tb-brand">
-      <div class="name">Eby Engineers <span style="font-style:italic; font-weight:400;">inc.</span></div>
+      <div class="logo-mark">
+        <div class="logo-eby">Eby</div>
+        <div class="logo-rule"></div>
+        <div class="logo-bottom-row">
+          <div class="logo-sub">Engineers inc.</div>
+          <div class="logo-follow">
+            <span class="logo-follow-label">Follow Us</span>
+            <a class="logo-social" href="https://www.facebook.com/profile.php?id=100057691170382" target="_blank" rel="noopener" aria-label="Eby Engineers on Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
+              </svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
       <div class="tag">civil design · land planning · construction management</div>
     </div>
     <div class="tb-cell">
@@ -192,45 +370,92 @@
     <nav class="tb-nav">
       <a href="#services">Services</a>
       <a href="#jurisdictions">Service Area</a>
-      <a href="#approach">Approach</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
-  <svg class="bg" viewBox="0 0 1080 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#2F6690" stroke-width="1">
-      <path d="M -20 420 C 200 380, 340 460, 560 400 S 900 340, 1100 400" opacity="0.35"/>
-      <path d="M -20 460 C 220 430, 360 500, 580 450 S 920 400, 1100 450" opacity="0.25"/>
-      <path d="M -20 380 C 180 340, 320 410, 540 350 S 880 300, 1100 350" opacity="0.2"/>
+  <svg class="bg" viewBox="0 0 1080 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#2F6690" stroke-width="1.2">
+      <path d="M -20 140 C 200 110, 340 170, 560 130 S 900 90, 1100 130" opacity="0.4"/>
+      <path d="M -20 170 C 220 145, 360 195, 580 160 S 920 130, 1100 160" opacity="0.3"/>
+      <path d="M -20 100 C 180 75, 320 125, 540 90 S 880 60, 1100 90" opacity="0.22"/>
     </g>
-    <g stroke="#1B2A4A" stroke-width="1.4" fill="none" opacity="0.3">
-      <path d="M 60 60 L 60 260 L 340 260 L 340 130 L 640 130 L 640 300 L 980 300"/>
-    </g>
-    <g fill="#C1471E" opacity="0.55">
-      <circle cx="60" cy="60" r="4"/>
-      <circle cx="60" cy="260" r="4"/>
-      <circle cx="340" cy="260" r="4"/>
-      <circle cx="340" cy="130" r="4"/>
-      <circle cx="640" cy="130" r="4"/>
-      <circle cx="640" cy="300" r="4"/>
-      <circle cx="980" cy="300" r="4"/>
-    </g>
-    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#1B2A4A" opacity="0.4">
-      <text x="66" y="52">MH-1</text>
-      <text x="346" y="122">MH-2</text>
-      <text x="646" y="292">MH-3</text>
+    <g fill="#C1471E" opacity="0.5">
+      <circle cx="180" cy="118" r="3.5"/>
+      <circle cx="560" cy="130" r="3.5"/>
+      <circle cx="900" cy="90" r="3.5"/>
     </g>
   </svg>
   <div class="hero-inner">
-    <div class="eyebrow">Houston, Texas &mdash; Since 1990</div>
-    <h1>Civil engineering for the districts and developers who <em>build Houston</em>.</h1>
-    <p class="lead">Eby Engineers provides municipal utility infrastructure, drainage, and land development engineering for MUD boards, developers, and municipalities across the greater Houston area.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:dennis@ebyengineers.com">Email Dennis</a>
-      <a class="btn btn-ghost" href="tel:7139570788">713.957.0788</a>
+    <div class="hero-text">
+      <div class="eyebrow">Houston, Texas &mdash; Since 1990</div>
+      <h1>Civil engineering, done right, for the districts that depend on it.</h1>
+      <p class="lead">Eby Engineers provides civil engineering for municipal utility districts and land development related projects &mdash; water, sewer, drainage, and site design, done by the people who show up.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:dennis@ebyengineers.com">Email Us</a>
+        <a class="btn btn-ghost" href="tel:7139570788">713.957.0788</a>
+      </div>
     </div>
+
+    <aside class="hero-feed">
+      <div class="hero-feed-head">
+        <span><span class="dot">&#9679;</span> Field Updates</span>
+        <span>Live</span>
+      </div>
+      <div class="hero-feed-scroll">
+        <div class="feed-post">
+          <div class="feed-post-top">
+            <span class="feed-post-date">July 17</span>
+            <span class="feed-post-tag">HC MUD 179</span>
+          </div>
+          <h4>MUD 179 Water Plant Improvements</h4>
+          <p>New control building, MCC, generator, and site improvements underway at the district's water plant.</p>
+          <div class="feed-post-photos">
+            <img src="images/mud179-water-plant-05.jpg" alt="Rebar and formwork for the new control building foundation">
+            <img src="images/mud179-water-plant-01.jpg" alt="Concrete pad poured near the site's storage tanks">
+            <img src="images/mud179-water-plant-04.jpg" alt="Finished concrete pad with anchor bolts set">
+          </div>
+        </div>
+        <div class="feed-post">
+          <div class="feed-post-top">
+            <span class="feed-post-date">June 30</span>
+            <span class="feed-post-tag">HC MUD 24</span>
+          </div>
+          <h4>Central Lift Station Rehab</h4>
+          <p>Pump replacement and electrical upgrades nearing completion at the district's central lift station.</p>
+        </div>
+        <div class="feed-post">
+          <div class="feed-post-top">
+            <span class="feed-post-date">June 12</span>
+            <span class="feed-post-tag">HC MUD 144</span>
+          </div>
+          <h4>Water Well No. 3 Rehabilitation</h4>
+          <p>Well redevelopment and pump testing underway ahead of summer demand.</p>
+        </div>
+        <div class="feed-post">
+          <div class="feed-post-top">
+            <span class="feed-post-date">May 28</span>
+            <span class="feed-post-tag">HC MUD 286</span>
+          </div>
+          <h4>Lakewood Crossing Trail Extension</h4>
+          <p>Grading complete; concrete trail pour scheduled for next week.</p>
+        </div>
+        <div class="feed-post">
+          <div class="feed-post-top">
+            <span class="feed-post-date">May 9</span>
+            <span class="feed-post-tag">HC MUD 69</span>
+          </div>
+          <h4>Emergency Generator Replacement</h4>
+          <p>New generator delivered and set at the district's water plant, ahead of hurricane season.</p>
+        </div>
+        <div class="hero-feed-fade"></div>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -238,35 +463,88 @@
   <div class="wrap">
     <div class="section-head">
       <div class="section-label">Scope of Services</div>
-      <h2>Engineering for infrastructure that has to work the first time.</h2>
-      <p>From design through construction, we carry projects across the agencies that govern them.</p>
+      <h2>Four disciplines, handled in-house.</h2>
+      <p>The same team that designs the utility layout is the one standing in front of the MUD board defending it &mdash; from concept through the last punch-list item.</p>
     </div>
   </div>
   <div class="wrap">
-    <div class="svc-grid">
-      <div class="svc-card">
+    <div class="svc-list">
+      <div class="svc-row">
         <div class="svc-num">01</div>
-        <h3>Municipal Utility Infrastructure</h3>
-        <p>Waterline and sanitary sewer design for MUDs and developers, from mainline extensions through tap connections.</p>
-        <div class="spec">C-900 PVC · bore &amp; jack · tapping sleeves</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="32" height="28" stroke="var(--blue)" stroke-width="1.4"/>
+            <path d="M4 16H36M4 26H36M14 6V34M26 6V34" stroke="var(--blue)" stroke-width="0.8" opacity="0.55"/>
+            <path d="M20 6V34" stroke="var(--rust)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="svc-body">
+          <h3>Site Civil &amp; Land Development</h3>
+          <p>Feasibility studies, land planning, platting, and site design that turns a tract into a buildable subdivision or commercial site.</p>
+        </div>
       </div>
-      <div class="svc-card">
+
+      <div class="svc-row">
         <div class="svc-num">02</div>
-        <h3>Stormwater &amp; Drainage</h3>
-        <p>Detention and drainage design sized to hold up under review, not just calculation.</p>
-        <div class="spec">Rational Method · Modified Puls routing</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 20H14" stroke="var(--blue)" stroke-width="1.4"/>
+            <circle cx="20" cy="20" r="6" stroke="var(--blue)" stroke-width="1.4"/>
+            <path d="M26 20H38" stroke="var(--blue)" stroke-width="1.4"/>
+            <path d="M16 10L24 10" stroke="var(--rust)" stroke-width="1.4"/>
+            <path d="M20 10V14" stroke="var(--rust)" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="svc-body">
+          <h3>Municipal Utility Infrastructure</h3>
+          <p>Water, sanitary sewer, drainage, grading, and paving design, along with treatment plant, lift station, and re-use system improvements for district facilities.</p>
+        </div>
       </div>
-      <div class="svc-card">
+
+      <div class="svc-row">
         <div class="svc-num">03</div>
-        <h3>Site Civil &amp; Land Development</h3>
-        <p>Grading, paving, and utility layout that turns a plat into a buildable site.</p>
-        <div class="spec">Plan production · AutoCAD Civil 3D</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="4" width="22" height="30" stroke="var(--blue)" stroke-width="1.4"/>
+            <path d="M11 11H25M11 16H25M11 21H20" stroke="var(--blue)" stroke-width="1" opacity="0.6"/>
+            <circle cx="28" cy="28" r="7" stroke="var(--rust)" stroke-width="1.3"/>
+            <path d="M25.2 28L27.2 30L31 25.5" stroke="var(--rust)" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="svc-body">
+          <h3>Municipal Utility District Management</h3>
+          <p>Ongoing engineering management for MUD boards &mdash; specifications, construction contract documents, construction management, permitting, and plan review.</p>
+        </div>
       </div>
-      <div class="svc-card">
+
+      <div class="svc-row">
         <div class="svc-num">04</div>
-        <h3>Regulatory Coordination</h3>
-        <p>We carry projects through review with the agencies that have jurisdiction over them, start to finish.</p>
-        <div class="spec">Permitting · plan review · construction admin</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 32C10 30 14 30 18 26C22 22 26 22 34 16" stroke="var(--blue)" stroke-width="1.4"/>
+            <circle cx="28" cy="12" r="6" stroke="var(--rust)" stroke-width="1.3"/>
+            <path d="M28 18V24" stroke="var(--rust)" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="svc-body">
+          <h3>Parks &amp; Trails</h3>
+          <p>Design and construction oversight for district parks, trails, and green space.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="districts">
+  <div class="wrap">
+    <div class="dist-inner">
+      <div class="jur-label">Districts we serve as engineering consultant</div>
+      <div class="dist-tags">
+        <span class="dist-tag">HC MUD 24 <span class="since">since 1990</span></span>
+        <span class="dist-tag">HC MUD 144 <span class="since">since 1992</span></span>
+        <span class="dist-tag">HC MUD 69 <span class="since">since 1994</span></span>
+        <span class="dist-tag">HC MUD 286 <span class="since">since 2004</span></span>
+        <span class="dist-tag">HC MUD 179 <span class="since">since 2008</span></span>
       </div>
     </div>
   </div>
@@ -287,24 +565,158 @@
   </div>
 </section>
 
-<section class="approach" id="approach">
+<section class="projects" id="projects">
   <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Selected Projects</div>
+      <h2>Work carried from design through record drawings.</h2>
+      <p>A sample of the district and county infrastructure Eby Engineers has designed, permitted, and closed out.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="proj-list">
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">HC MUD 24</span>
+          <span class="proj-year">2014</span>
+        </div>
+        <h3>Twin Falls Subdivision, Section 4</h3>
+        <div class="proj-client">Owner: Meritage Homes of Texas, LLC</div>
+        <p>Water, sanitary sewer, drainage, and paving to serve a 469-lot residential subdivision, designed and carried through City of Houston plan review to record drawings.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">HC MUD 179</span>
+          <span class="proj-year">2018</span>
+        </div>
+        <h3>Easton Commons Nature Park Expansion</h3>
+        <div class="proj-client">Owner: Harris County MUD No. 179</div>
+        <p>Expansion of an existing district nature park, including pond and detention design, trail layout, drainage, and irrigation.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">HC MUD 179</span>
+          <span class="proj-year">2010</span>
+        </div>
+        <h3>Easton Commons Trail Improvements</h3>
+        <div class="proj-client">Owner: Harris County MUD No. 179</div>
+        <p>Granite and concrete trail extension with ADA-compliant sidewalks, curb ramps, and stormwater pollution prevention measures.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">HC MUD 24</span>
+          <span class="proj-year">2017</span>
+        </div>
+        <h3>Five Forks Tract Annexation Feasibility Study</h3>
+        <div class="proj-client">Owner: Harris County MUD No. 24 Board of Directors</div>
+        <p>Feasibility study for annexation of a 25-acre, 100-lot tract, covering utility capacity, offsite connections, and a preliminary bond scenario.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">HC MUD 24</span>
+          <span class="proj-year">Ongoing</span>
+        </div>
+        <h3>Water Plant No. 2 &amp; District Facilities Improvements</h3>
+        <div class="proj-client">Owner: Harris County MUD No. 24</div>
+        <p>Dechlorination facilities, elevated and ground storage tanks, well rehabilitation, a 2.0 MGD central lift station, and SCADA upgrades across the district's water and wastewater system.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-sheet">Commercial</span>
+          <span class="proj-year">Multi-year</span>
+        </div>
+        <h3>Eckerd Drug Stores &mdash; Site Civil Improvements</h3>
+        <div class="proj-client">Owner: Eckerd Corporation</div>
+        <p>Site drainage and civil design for over 70 retail locations across Texas and Louisiana, one of several long-running commercial site engineering programs the firm has supported.</p>
+        <div class="proj-photos">
+          <div class="proj-photo-ph">IMG 01</div>
+          <div class="proj-photo-ph">IMG 02</div>
+          <div class="proj-photo-ph">IMG 03</div>
+          <div class="proj-photo-ph">IMG 04</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">About Us</div>
+      <h2>Founded in 1990, still hands-on today.</h2>
+    </div>
     <div class="approach-grid">
       <div>
-        <div class="section-label">Approach</div>
-        <h2>A small firm, on purpose.</h2>
-        <p>Eby Engineers has provided civil design, land planning, and construction management services to the Houston area since 1990. We keep the firm small enough that the engineer who designs your project is the same one who answers the phone during construction.</p>
-        <p>Every project runs through the agencies that govern it &mdash; MUD boards, county offices, and state regulators &mdash; and we treat that coordination as part of the engineering, not a step after it.</p>
+        <p>Eby Engineers was founded in 1990 by Dennis R. Eby, P.E., a Purdue-trained civil engineer who had previously worked as a project engineer for the City of Houston's Wastewater Engineering Department, McClelland Engineers, and Landev Engineers.</p>
+        <p>What began as a small civil design practice has grown into the engineering consultant of record for five Harris County Municipal Utility Districts, with more than 2,000 projects spanning water and wastewater treatment facilities, residential and commercial land development, and district parks and trails &mdash; while staying intentionally small enough that the engineers who design a project are the ones who see it through construction.</p>
       </div>
-      <div>
-        <div class="stat-block">
-          <div class="num">1990</div>
-          <div class="lbl">Firm founded</div>
-        </div>
-        <div class="stat-block">
-          <div class="num">F-1127</div>
-          <div class="lbl">T.B.P.E. Firm Registration No.</div>
-        </div>
+      <div class="team-card">
+        <h3>Dennis R. Eby, P.E.</h3>
+        <div class="role">Founder</div>
+        <div class="cred">B.S. Civil Engineering, Purdue University, 1977</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Client Feedback</div>
+      <h2>What district boards and developers say.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-mark">&ldquo;</div>
+        <p>Eby Engineers, Inc. has been the District Engineer for HC MUD 24 for 26 years. Mr. Eby's concerns are always to protect the interest of the District, and his professionalism allows him to work well with other consultants, builders, developers and related governing agencies. Our District would give Eby Engineers, Inc. a AAA rating.</p>
+        <div class="test-attr">Ruben Gonzales, Jr.<span class="org">HC MUD 24, Board President</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-mark">&ldquo;</div>
+        <p>I found Dennis Eby always putting the interests of the District ahead of his own. One year when he saved the District about $500,000 compared to the design of another engineering firm regarding our shared sewer plant, we gave him a $10,000 bonus. I could not give a firm a higher recommendation.</p>
+        <div class="test-attr">David Weathersby<span class="org">HC MUD 144, Past President</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-mark">&ldquo;</div>
+        <p>Meritage Homes has enjoyed working with Eby Engineers, Inc. the past few years. Dennis has demonstrated extensive comprehension of the local market to prepare cost effective plans in a timely manner, with numerous contacts in his network to quickly solve challenging issues.</p>
+        <div class="test-attr">Nick Luton<span class="org">Meritage Homes, VP of Development</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-mark">&ldquo;</div>
+        <p>Eby Engineers, Inc. has all the necessary civil engineering capabilities and in addition has very expert knowledge of design of large recreational parks. They also do an excellent job reviewing all of the District's developing businesses and keeping everyone up to the District's regulations.</p>
+        <div class="test-attr">Chuck Hadley<span class="org">HC MUD 179, Board President</span></div>
       </div>
     </div>
   </div>
@@ -329,6 +741,15 @@
         <div class="tb-label">Firm Registration</div>
         <div class="tb-value mono">T.B.P.E. F-1127</div>
       </div>
+      <div class="foot-cell">
+        <div class="tb-label">Follow Us</div>
+        <a class="tb-value social-link" href="https://www.facebook.com/profile.php?id=100057691170382" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
     </div>
   </div>
   <div class="foot-legal">
@@ -336,6 +757,15 @@
     <span>SHEET: CONTACT &nbsp;·&nbsp; SCALE: NTS &nbsp;·&nbsp; REV: 2026</span>
   </div>
 </footer>
+
+<div class="sheet-frame" aria-hidden="true">
+  <span class="corner tl"></span>
+  <span class="corner tr"></span>
+  <span class="corner bl"></span>
+  <span class="corner br"></span>
+  <span class="side-label">EBY ENGINEERS INC. &mdash; T.B.P.E. F-1127</span>
+  <span class="side-label right">HOUSTON, TEXAS &mdash; SINCE 1990</span>
+</div>
 
 </body>
 </html>
